@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-sdef welcome():
+ssdef welcome():
     return 'Default Home Page'
 
 
