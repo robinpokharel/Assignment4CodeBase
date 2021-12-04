@@ -5,28 +5,36 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-def welcome():
+sdef welcome():
     return 'Default Home Page'
 
 
 def getInetAddress(line):
-    items = line.split("inet addr:")
-    if len(items) > 1:
-        return items[1].split()[0]
+    try:
+        items = line.split("inet addr:")
+        if len(items) > 1:
+            return items[1].split()[0]
 
-    return None
+        return None
+    except:
+        return "Error"
 
 def getInetName(i):
-    items = i.split("Link")
-    if len(items) > 0:
-        return items[0].strip()
+    try:
+        items = i.split("Link")
+        if len(items) > 0:
+            return items[0].strip()
 
-    return None
+        return None
+    except:
+        return "Error"
 
 @app.route('/iproutes')
 def iproutes():
-    return 'ip routes'
-
+    try:
+        return 'ip routes'
+    except:
+        return "Error"
 
 @app.route('/interfaces')
 def interfaces():
