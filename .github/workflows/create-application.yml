@@ -14,10 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      run: docker build . --file Dockerfile --tag robindocker22/assignment-4
-      
+    - name: docker login
+      env:
+       DOCKER_USER: ${{secrets.DOCKER_USER}}
+       DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Build image
+      run: docker build . --file Dockerfile --tag robindocker22/assignment-4:$(date +%s)
     - name: Docker Push
-      run: docker push ${{secrets.assignment-4}}
-      
-  # Reference: https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
+      run: docker push ${{secrets.robindocker22/assignment-4}}
+     
+   
+# Reference: https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
