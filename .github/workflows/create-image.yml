@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      run: docker build . --file Dockerfile --tag robindocker22/assignment-4
+      run: docker build . --file Dockerfile --tag robindocker22/assignment-4:tagname
       
     - name: Docker Push
       run: docker push ${{secrets.assignment-4}}
