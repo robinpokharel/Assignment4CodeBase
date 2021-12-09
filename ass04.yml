@@ -60,6 +60,6 @@
         msg: "Installed"
         when: "'pip' in ansible_facts.packages"
 
-#References
+#references
 #https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_facts_module.html
 #https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pip_module.html
