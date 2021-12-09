@@ -18,6 +18,6 @@ jobs:
       run: docker build . --file Dockerfile --tag robindocker22/assignment-4:$(date +%s)
       
     - name: Docker Push
-      run: docker push ${{secrets.https://hub.docker.com/repository/docker/robindocker22/assignment-4}}
+      run: docker push ${{secrets.assignment-4}}
       
   # Reference: https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
