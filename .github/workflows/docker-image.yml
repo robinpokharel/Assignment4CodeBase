@@ -1,0 +1,23 @@
+name: net20008-ass4
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      run: docker build . --file Dockerfile --tag robindocker22/assignment-4:$(date +%s)
+      
+    - name: Docker Push
+      run: docker push ${{secrets.https://hub.docker.com/repository/docker/robindocker22/assignment-4}}
+      
+  # Reference: https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
